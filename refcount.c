@@ -91,7 +91,7 @@ void e_release(void *ptr)
   }
 }
 
-void *e_clone(void *ptr)
+void *e_clone(const void *ptr)
 {
   return e_allocate(int_get_size(ptr), &(struct e_allocate_params) {
     .context = ptr,

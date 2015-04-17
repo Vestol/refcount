@@ -30,14 +30,14 @@
 #include <stddef.h>
 
 struct e_allocate_params {
-  void *context;
+  const void *context;
   int (*constructor)(const void *, void *);
   void (*destructor)(void *);
   int (*clone)(const void *, void *);
 };
 
 void *e_allocate(size_t size , const struct e_allocate_params *params);
-void *e_clone(void *ptr);
+void *e_clone(const void *ptr);
 
 void e_retain(void *ptr);
 void e_release(void *ptr);
