@@ -92,10 +92,13 @@ void e_release(void *ptr)
   }
 }
 
-void *e_clone(const void *ptr)
+void *e_clone(const void *ptr, bool deep)
 {
   return e_allocate(int_get_size(ptr), &(struct e_allocate_params) {
-    .context = ptr,
+    .context = &(struct e_clone_params) {
+      .context = ptr,
+      .deep = deep
+    },
     .constructor = ( (struct int_memptr *) ptr - 1)->clone,
     .destructor = ( (struct int_memptr *) ptr - 1)->destructor,
     .clone = ( (struct int_memptr *)  ptr - 1)->clone

@@ -28,6 +28,7 @@
 #define VSTL_REFCOUNT
 
 #include <stddef.h>
+#include <stdbool.h>
 
 struct e_allocate_params {
   const void *context;
@@ -36,8 +37,13 @@ struct e_allocate_params {
   int (*clone)(const void *, void *);
 };
 
+struct e_clone_params {
+  bool deep;
+  const void *context;
+};
+
 void *e_allocate(size_t size , const struct e_allocate_params *params);
-void *e_clone(const void *ptr);
+void *e_clone(const void *ptr, bool deep);
 
 void *e_retain(void *ptr);
 void e_release(void *ptr);
