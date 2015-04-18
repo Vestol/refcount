@@ -41,9 +41,10 @@ static inline size_t int_get_size(const void *ptr)
   return ( (struct int_memptr *) ptr - 1)->size;
 }
 
-static int int_clone_constr(const void *orig, void *copy)
+static int int_clone_constr(const void *ctx, void *copy)
 {
-  (void) memcpy(copy, orig, int_get_size(orig) );
+  const struct e_clone_params *p = ctx;
+  (void) memcpy(copy, p->context, int_get_size(p->context) );
   return 0;
 }
 
