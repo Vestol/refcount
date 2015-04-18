@@ -113,3 +113,9 @@ void e_free(void *ptr)
 {
   free(ptr);
 }
+
+ __attribute__((weak))
+void *e_realloc(void *ptr, size_t size)
+{
+  return realloc(ptr, size);
+}

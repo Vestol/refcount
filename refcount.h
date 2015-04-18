@@ -43,6 +43,7 @@ void *e_retain(void *ptr);
 void e_release(void *ptr);
 
 void *e_malloc(size_t size) __attribute__((weak));
+void *e_realloc(void *ptr, size_t size) __attribute__((weak));
 void e_free(void *ptr) __attribute__((weak));
 
 #endif
