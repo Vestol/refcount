@@ -39,7 +39,7 @@ struct e_allocate_params {
 void *e_allocate(size_t size , const struct e_allocate_params *params);
 void *e_clone(const void *ptr);
 
-void e_retain(void *ptr);
+void *e_retain(void *ptr);
 void e_release(void *ptr);
 
 void *e_malloc(size_t size) __attribute__((weak));

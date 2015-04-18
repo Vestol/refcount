@@ -71,9 +71,10 @@ void *e_allocate(size_t size, const struct e_allocate_params *params)
   return ptr + 1;
 }
 
-void e_retain(void *ptr)
+void *e_retain(void *ptr)
 {
   ( (struct int_memptr *) ptr - 1)->count++;
+  return ptr;
 }
 
 void e_release(void *ptr)
